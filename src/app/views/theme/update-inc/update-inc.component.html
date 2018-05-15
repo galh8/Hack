@@ -1,3 +1,88 @@
-<p>
-  update-inc works!
-</p>
+<form>
+  <div class="card">
+    <div class="card-header">
+      <strong>Report Incident</strong>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="form-group">
+            <label for="date">Date</label>
+            <input type="text" class="form-control" id="date" value="{{d}}" disabled>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="form-group">
+            <label for="name">ID</label>
+            <input type="number" class="form-control" id="name" placeholder="ID of client" disabled>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="form-group">
+            <label for="amount">Amount of claim</label>
+            <div class="input-prepend input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">₪</span>
+              </div>
+              <input id="amount" class="form-control" size="16" type="text">
+              <div class="input-group-append">
+                <span class="input-group-text">.00</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label">Status</label>
+        <div class="col-md-9 col-form-label">
+          <div class="form-check form-check-inline col-md-3 mr-1">
+            <input class="form-check-input" type="radio" id="inline-radio1" value="option1" name="status">
+            <label class="form-check-label" for="inline-radio1">Opened</label>
+          </div>
+          <div class="form-check form-check-inline col-md-3 mr-1">
+            <input class="form-check-input" type="radio" id="inline-radio2" value="option2" name="status">
+            <label class="form-check-label" for="inline-radio2">Estimated</label>
+          </div>
+          <div class="form-check form-check-inline col-md-3 mr-1">
+            <input class="form-check-input" type="radio" id="inline-radio3" value="option3" name="status">
+            <label class="form-check-label" for="inline-radio3">Finished</label>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="select1">Type</label>
+        <div class="col-md-9">
+          <select id="select1" name="select1" class="form-control">
+            <option value="0">Please select</option>
+            <option value="1">Total loss</option>
+            <option value="2">Messed up</option>
+            <option value="3">Minor scratch</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label">Verdict</label>
+        <div class="col-md-9 col-form-label">
+          <div class="form-check form-check-inline col-md-4 mr-1">
+            <input class="form-check-input" type="radio" id="inline-radio1" value="option1" name="status">
+            <label class="form-check-label" for="inline-radio1">Guilty</label>
+          </div>
+          <div class="form-check form-check-inline col-md-4 mr-1">
+            <input class="form-check-input" type="radio" id="inline-radio3" value="option3" name="status">
+            <label class="form-check-label" for="inline-radio3">Not guilty</label>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="card-footer">
+      <button type="submit" class="btn btn-sm btn-primary" (click)="OnReport();">
+        <i class="fa fa-dot-circle-o"></i> Update</button>
+    </div>
+  </div>
+</form>
