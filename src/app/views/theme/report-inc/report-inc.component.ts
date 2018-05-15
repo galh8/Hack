@@ -12,4 +12,8 @@ export class ReportIncComponent implements OnInit {
   ngOnInit() {
   }
 
+  OnReport() {
+    alert('hello');
+  }
+
 }
