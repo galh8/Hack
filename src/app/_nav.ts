@@ -2,15 +2,14 @@ export const navItems = [
   {
     name: 'Dashboard',
     url: '/dashboard',
-    icon: 'icon-speedometer',
+    icon: 'icon-user',
     badge: {
       variant: 'info',
-      text: 'NEW'
     }
   },
   {
     title: true,
-    name: 'Theme'
+    name: 'Action'
   },
   {
     name: 'Colors',
@@ -23,7 +22,7 @@ export const navItems = [
     icon: 'icon-pencil'
   },
   {
-    title: true,
+    title: false,
     name: 'Components'
   },
   {
