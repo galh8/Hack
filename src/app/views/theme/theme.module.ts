@@ -7,6 +7,8 @@ import { TypographyComponent } from './typography.component';
 
 // Theme Routing
 import { ThemeRoutingModule } from './theme-routing.module';
+import { ReportIncComponent } from './report-inc/report-inc.component';
+import { UpdateIncComponent } from './update-inc/update-inc.component';
 
 @NgModule({
   imports: [
@@ -15,7 +17,9 @@ import { ThemeRoutingModule } from './theme-routing.module';
   ],
   declarations: [
     ColorsComponent,
-    TypographyComponent
+    TypographyComponent,
+    ReportIncComponent,
+    UpdateIncComponent
   ]
 })
 export class ThemeModule { }

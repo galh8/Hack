@@ -1,24 +1,24 @@
 export const navItems = [
   {
-    name: 'Dashboard',
+    name: 'Insurance Background',
     url: '/dashboard',
-    icon: 'icon-user',
+    icon: 'icon-chart',
     badge: {
       variant: 'info',
     }
   },
   {
     title: true,
-    name: 'Action'
+    name: 'Actions'
   },
   {
-    name: 'Colors',
-    url: '/theme/colors',
-    icon: 'icon-drop'
+    name: 'Report New Incident',
+    url: '/theme/report-incident',
+    icon: 'icon-bell'
   },
   {
-    name: 'Typography',
-    url: '/theme/typography',
+    name: 'Update Incident',
+    url: '/theme/update-incident',
     icon: 'icon-pencil'
   },
   {
