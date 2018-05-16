@@ -8,7 +8,7 @@
         <div class="col-sm-12">
           <div class="form-group">
             <label for="date">Date</label>
-            <input type="text" class="form-control" id="date" value="{{d}}" disabled>
+            <input type="text" #Date class="form-control" id="date" value="{{d}}" disabled>
           </div>
         </div>
       </div>
@@ -16,13 +16,13 @@
         <div class="col-sm-6">
           <div class="form-group">
             <label for="fname">Name</label>
-            <input type="text" class="form-control" id="fname" placeholder="First name">
+            <input type="text" class="form-control" id="fname" placeholder="First name" #fname >
           </div>
         </div>
         <div class="col-sm-6">
           <div class="form-group">
             <label for="lname">Name</label>
-            <input type="text" class="form-control" id="lname" placeholder="Last name">
+            <input type="text" class="form-control" id="lname" placeholder="Last name" #lname >
           </div>
         </div>
       </div>
@@ -30,8 +30,8 @@
       <div class="row">
         <div class="col-sm-12">
           <div class="form-group">
-            <label for="name">ID</label>
-            <input type="number" class="form-control" id="name" placeholder="ID of client">
+            <label>ID</label>
+            <input type="number" class="form-control" #ClientID placeholder="ID of client">
           </div>
         </div>
       </div>
@@ -43,7 +43,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text">₪</span>
               </div>
-              <input id="amount" class="form-control" size="16" type="text">
+              <input id="amount" class="form-control" size="16" type="text" #Amount_of_claim>
               <div class="input-group-append">
                 <span class="input-group-text">.00</span>
               </div>
@@ -55,15 +55,15 @@
         <label class="col-md-3 col-form-label">Status</label>
         <div class="col-md-9 col-form-label">
           <div class="form-check form-check-inline col-md-3 mr-1">
-            <input class="form-check-input" type="radio" id="inline-radio1" value="option1" name="status">
+            <input class="form-check-input" type="radio" id="inline-radio1" value="option1" name="status" #Opened>
             <label class="form-check-label" for="inline-radio1">Opened</label>
           </div>
           <div class="form-check form-check-inline col-md-3 mr-1">
-            <input class="form-check-input" type="radio" id="inline-radio2" value="option2" name="status">
+            <input class="form-check-input" type="radio" id="inline-radio2" value="option2" name="status" #Estimated>
             <label class="form-check-label" for="inline-radio2">Estimated</label>
           </div>
           <div class="form-check form-check-inline col-md-3 mr-1">
-            <input class="form-check-input" type="radio" id="inline-radio3" value="option3" name="status">
+            <input class="form-check-input" type="radio" id="inline-radio3" value="option3" name="status" #Finished>
             <label class="form-check-label" for="inline-radio3">Finished</label>
           </div>
         </div>
@@ -71,7 +71,7 @@
       <div class="form-group row">
         <label class="col-md-3 col-form-label" for="select1">Type</label>
         <div class="col-md-9">
-          <select id="select1" name="select1" class="form-control">
+          <select id="select1" name="select1" class="form-control" #Select1>
             <option value="0">Please select</option>
             <option value="1">Total loss</option>
             <option value="2">Messed up</option>
@@ -83,11 +83,11 @@
         <label class="col-md-3 col-form-label">Verdict</label>
         <div class="col-md-9 col-form-label">
           <div class="form-check form-check-inline col-md-4 mr-1">
-            <input class="form-check-input" type="radio" id="inline-radio1" value="option1" name="status">
+            <input class="form-check-input" type="radio" id="inline-radio1" value="option1" name="guilt"  #Guilty>
             <label class="form-check-label" for="inline-radio1">Guilty</label>
           </div>
           <div class="form-check form-check-inline col-md-4 mr-1">
-            <input class="form-check-input" type="radio" id="inline-radio3" value="option3" name="status">
+            <input class="form-check-input" type="radio" id="inline-radio3" value="option3" name="guilt" #Not_guilty>
             <label class="form-check-label" for="inline-radio3">Not guilty</label>
           </div>
         </div>
@@ -95,7 +95,7 @@
 
     </div>
     <div class="card-footer">
-      <button type="submit" class="btn btn-sm btn-primary" (click)="OnReport();">
+      <button type="submit" class="btn btn-sm btn-primary" (click)="OnReport(fname.value,lname.value,Date.value, ClientID.value, Amount_of_claim.value,Opened.checked,Estimated.checked,Finished.checked,Guilty.checked,Not_guilty.checked,Select1.value)">
         <i class="fa fa-dot-circle-o"></i> Submit</button>
     </div>
   </div>
