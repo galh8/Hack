@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+﻿import { Component, OnInit } from "@angular/core";
 
 @Component({
   selector: "app-report-inc",
@@ -15,4 +15,5 @@ export class ReportIncComponent implements OnInit {
   OnReport() {
     alert("hello");
   }
+  OnSubmit(date, firstName, lastName, ID, ammounOfClaim, Opened, Estimated, Finished, Guilty, Not_guilty, select) { }
 }
