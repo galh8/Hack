@@ -1,4 +1,4 @@
-<form (ngSubmit)="OnSubmit(user_id.value)">
+<form (ngSubmit)="getDat(user_id.value)">
   <div class="card">
     <div class="card-header">
       <strong>Get Insured Details</strong>
@@ -21,10 +21,15 @@
 </form>
 
 
+
 <div *ngIf="ShowResults">
-<table>
-  <h2>{{user_first_name}}</h2>
-  <td>{{user_last_name}}</td>
-</table>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="card">
+  <div class="card-body">
+  <h1 style="font-weight: bold; color: green;">avg : {{avg1}} sum : {{sum1}} type1: {{type11}} </h1>
+  <p >type2: {{type21}} type3: {{type31}} type4: {{type41}} guilt : {{guilt1}}</p>
+    <p>Number Of accidents: {{counter1}} </p>
+  </div>
+</div>
 </div>
 

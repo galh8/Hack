@@ -3,16 +3,111 @@ import { Router } from '@angular/router';
 import { getStyle, hexToRgba } from '@coreui/coreui/dist/js/coreui-utilities';
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
 import { NgForm } from '@angular/forms';
+import * as Web3 from 'web3';
+import {parseHttpResponse} from 'selenium-webdriver/http';
 
 @Component({
   templateUrl: 'dashboard.component.html'
 })
 export class DashboardComponent implements OnInit {
   ShowResults = false;
-  user_last_name = 'huta';
-  user_first_name = 'gal';
-  userId = '304859861';
-  numberOfAccidents = 2;
+  avg1 = 0;
+  guilt1 = 0;
+  sum1 = 0;
+  counter1 = 0;
+  type11 = 0;
+  type21 = 0;
+  type31 = 0;
+  type41 = 0;
+
+  web3: any;
+  account: string;
+  ContractInstance:any;
+  ABI: string= '[{"constant":true,"inputs":[{"name":"caseid","type":"uint256"}],"name":"getData","outputs":[{"name":"","type":"uint256"},{"name":"","type":"uint256"},{"name":"","type":"uint256"},{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"_personid","type":"uint256"}],"name":"getCasesByPerson","outputs":[{"name":"","type":"uint256[]"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"createUniqueId","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"},{"name":"","type":"uint256"}],"name":"persons","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"incidents","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"caseid","type":"uint256"}],"name":"getCaseAddress","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"caseid","type":"uint256"},{"name":"status","type":"uint256"},{"name":"amountOfClaim","type":"uint256"},{"name":"incidentType","type":"uint256"},{"name":"isGuilty","type":"bool"}],"name":"updateContract","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_personid","type":"uint256"},{"name":"status","type":"uint256"},{"name":"amountOfClaim","type":"uint256"},{"name":"incidentType","type":"uint256"},{"name":"isGuilty","type":"bool"},{"name":"_dateOfCreation","type":"uint256"}],"name":"newIncident","outputs":[{"name":"newContract","type":"address"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"uid","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"}]';
+
+  constructor() {
+    let urlProvider="http://localhost:8545"
+    this.web3 = new Web3(new Web3.providers.HttpProvider(urlProvider));
+
+    this.web3.eth.getAccounts((error,result)=>{
+      this.account = result[0];
+    });
+    this.fromAddress('0xb29cb14f30d0b7011251dd11012c811eb56e2624');
+  }
+
+  fromAddress(address: string): void {
+    this.ContractInstance = this.web3.eth.contract(JSON.parse(this.ABI), { from: this.account, gasPrice: 300000 }).at(address);
+  }
+
+  getDat(id) {
+    /* var test  = this.ContractInstance.getInstructor.call().toString();
+     console.log(test)*/
+    console.log(this.ContractInstance);
+    this.ContractInstance.getCasesByPerson(id, (error, result) => {
+      let pharsedObj = JSON.parse(JSON.stringify(result));
+      var guilty : number = 0;
+      var sum : number = 0;
+      var counter : number = 0;
+      var type1 : number = 0;
+      var type2 : number = 0;
+      var type3 : number = 0;
+      var type4 : number = 0;
+      var avg : number = 0;
+
+      for (var x in pharsedObj) {
+        this.ContractInstance.getData(pharsedObj[x], (error, result) => {
+            counter = counter + 1;
+            sum = sum + result[1];
+            if (result[2] == 1) {
+              type1 = type1 + 1;
+            }
+            if (result[2] == 2) {
+              type2 = type2 + 1;
+            }
+            if (result[2] == 3) {
+              type3 = type3 + 1;
+            }
+            if (result[2] == 4) {
+              type4 = type4 + 1;
+            }
+            if (result[3] === false) {
+              guilty = guilty + 1;
+            }
+
+          alert(guilty);
+          this.avg1 = sum / counter;
+          this.sum1 = sum;
+          this.type11 = type1;
+          this.type21 = type2;
+          this.type31 = type3;
+          this.type41 = type4;
+          this.guilt1 = guilty;
+          this.counter1 = counter;
+        });
+
+      }
+
+
+      this.ShowResults = true;
+      //this.name = result[0];
+    //  this. =result[1];
+     // this.response= 'The value stored in the contract is: ' + result.toNumber();
+    });
+  }
+
+
+
+
+  setData(name,age) {
+    this.ContractInstance.setInstructor(name,age,{
+      from: this.account,
+      gas: 300000,
+      gasPrice: 30000000
+    },(error, result) =>
+    {
+      //this.response ='Setting value... Your transaction hash is: ' + String(result);
+    });
+  }
 
   OnSubmit() {
     let g = 1;

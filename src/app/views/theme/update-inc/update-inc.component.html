@@ -17,7 +17,7 @@
         <div class="col-sm-12">
           <div class="form-group">
             <label for="name">ID</label>
-            <input type="number" class="form-control" id="name" #ID placeholder="ID of client" >
+            <input type="number" class="form-control" id="name" #ClientID placeholder="ID of client" >
           </div>
         </div>
       </div>
@@ -42,7 +42,7 @@
         <div class="col-md-9 col-form-label">
           <div class="form-check form-check-inline col-md-3 mr-1">
             <input class="form-check-input" type="radio" id="inline-radio1" value="option1" name="status" #Opened>
-            <label class="form-check-label" for="inline-radio1">Opened</label>
+            <label class="form-check-label"  for="inline-radio1">Opened</label>
           </div>
           <div class="form-check form-check-inline col-md-3 mr-1">
             <input class="form-check-input" type="radio" id="inline-radio2" value="option2" name="status" #Estimated>
@@ -57,7 +57,7 @@
       <div class="form-group row">
         <label class="col-md-3 col-form-label" for="select1">Type</label>
         <div class="col-md-9">
-          <select id="select1" name="select1" class="form-control">
+          <select id="select1" name="select1" class="form-control" #Select1>
             <option value="0">Please select</option>
             <option value="1">Total loss</option>
             <option value="2">Messed up</option>
@@ -69,11 +69,11 @@
         <label class="col-md-3 col-form-label">Verdict</label>
         <div class="col-md-9 col-form-label">
           <div class="form-check form-check-inline col-md-4 mr-1">
-            <input class="form-check-input" type="radio" id="inline-radio1" value="option1" name="status" #Guilty>
+            <input class="form-check-input" type="radio" id="inline-radio1" value="option1" name="guilt" #Guilty>
             <label class="form-check-label" for="inline-radio1">Guilty</label>
           </div>
           <div class="form-check form-check-inline col-md-4 mr-1">
-            <input class="form-check-input" type="radio" id="inline-radio3" value="option3" name="status" #Not_guilty>
+            <input class="form-check-input" type="radio" id="inline-radio3" value="option3" name="guilt" #Not_guilty>
             <label class="form-check-label" for="inline-radio3">Not guilty</label>
           </div>
         </div>
@@ -81,8 +81,9 @@
 
     </div>
     <div class="card-footer">
-      <button type="submit" class="btn btn-sm btn-primary" (click)="OnReport();">
+      <button type="submit" class="btn btn-sm btn-primary" (click)="OnReport(date.value, ClientID.value, Amount_of_claim.value,Opened.checked,Estimated.checked,Finished.checked,Guilty.checked,Not_guilty.checked,Select1.value)">
         <i class="fa fa-dot-circle-o"></i> Update</button>
     </div>
   </div>
 </form>
+
