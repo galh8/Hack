@@ -74,7 +74,6 @@ export class DashboardComponent implements OnInit {
               guilty = guilty + 1;
             }
 
-          alert(guilty);
           this.avg1 = sum / counter;
           this.sum1 = sum;
           this.type11 = type1;
