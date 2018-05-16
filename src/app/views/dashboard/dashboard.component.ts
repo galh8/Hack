@@ -2,11 +2,32 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { getStyle, hexToRgba } from '@coreui/coreui/dist/js/coreui-utilities';
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
+import { NgForm } from '@angular/forms';
 
 @Component({
   templateUrl: 'dashboard.component.html'
 })
 export class DashboardComponent implements OnInit {
+  ShowResults = false;
+  user_last_name = 'huta';
+  user_first_name = 'gal';
+  userId = '304859861';
+  numberOfAccidents = 2;
+
+  OnSubmit() {
+    let g = 1;
+    let G = JSON.stringify(g);
+
+    this.ShowUserDetails();
+  }
+
+  ShowUserDetails() {
+    this.ShowResults = true;
+  }
+
+  checkSomething() {
+    return this.ShowResults;
+  }
 
   // lineChart1
   public lineChart1Data: Array<any> = [

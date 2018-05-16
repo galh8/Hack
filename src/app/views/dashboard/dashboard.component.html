@@ -1,21 +1,30 @@
-<form>
+<form (ngSubmit)="OnSubmit(user_id.value)">
   <div class="card">
     <div class="card-header">
-      <strong>Report Incident</strong>
+      <strong>Get Insured Details</strong>
     </div>
     <div class="card-body">
       <div class="row">
         <div class="col-sm-12">
           <div class="form-group">
-            <label for="name">ID</label>
-            <input type="number" class="form-control" id="name" placeholder="ID of client">
+            <label>ID</label>
+            <input type="number" class="form-control" #user_id placeholder="ID of client">
           </div>
         </div>
       </div>
     </div>
     <div class="card-footer">
-      <button type="submit" class="btn btn-sm btn-primary" (click)="OnReport();">
+      <button type="submit" class="btn btn-sm btn-primary">
         <i class="fa fa-dot-circle-o"></i> Submit</button>
     </div>
   </div>
 </form>
+
+
+<div *ngIf="ShowResults">
+<table>
+  <h2>{{user_first_name}}</h2>
+  <td>{{user_last_name}}</td>
+</table>
+</div>
+
