@@ -19,6 +19,7 @@ export class DashboardComponent implements OnInit {
   type21 = 0;
   type31 = 0;
   type41 = 0;
+  summery = 0;
 
   web3: any;
   account: string;
@@ -54,6 +55,7 @@ export class DashboardComponent implements OnInit {
       var type4 : number = 0;
       var avg : number = 0;
 
+
       for (var x in pharsedObj) {
         this.ContractInstance.getData(pharsedObj[x], (error, result) => {
             counter = counter + 1;
@@ -88,6 +90,16 @@ export class DashboardComponent implements OnInit {
 
 
       this.ShowResults = true;
+      if (this.sum1 == 0) {
+        this.summery = 500;
+      } else {
+        this.summery = 5000 * this.guilt1/this.sum1;
+      }
+
+      if (this.summery < 500) {
+        this.summery = 500;
+      }
+
       //this.name = result[0];
     //  this. =result[1];
      // this.response= 'The value stored in the contract is: ' + result.toNumber();

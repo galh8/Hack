@@ -1,4 +1,4 @@
-﻿<form (ngSubmit) ="OnSubmit(txt.value, num.value, txt2.value, Opened.value, Estimated.value, Finished.value, Guilty.value, Not_guilty.value)">
+﻿<form>
   <div class="card">
     <div class="card-header">
       <strong>Report Incident</strong>
@@ -95,7 +95,7 @@
 
     </div>
     <div class="card-footer">
-      <button type="submit" class="btn btn-sm btn-primary" (click)="OnReport(fname.value,lname.value,Date.value, ClientID.value, Amount_of_claim.value,Opened.checked,Estimated.checked,Finished.checked,Guilty.checked,Not_guilty.checked,Select1.value)">
+      <button class="btn btn-sm btn-primary" (click)="OnReport(fname.value,lname.value,Date.value, ClientID.value, Amount_of_claim.value,Opened.checked,Estimated.checked,Finished.checked,Guilty.checked,Not_guilty.checked,Select1.value)">
         <i class="fa fa-dot-circle-o"></i> Submit</button>
     </div>
   </div>
